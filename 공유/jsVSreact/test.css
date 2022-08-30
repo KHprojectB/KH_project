@@ -1,0 +1,19 @@
+.test {
+  width: 50rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.p {
+  display: none;
+}
+.p.show {
+  display: block;
+}
+
+.btn-con {
+  display: flex;
+}
