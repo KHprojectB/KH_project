@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { Fragment, useState } from "react";
 
-import Test from './components/test/Test'
+import Test from "./components/test/Test";
+import Modal from "./components/modal/Modal";
 
 const App = () => {
-  return (
-    <Test></Test>
-  )
-}
 
-export default App
+  return (
+    <Fragment>
+      <button>OPEN</button>
+      <Test></Test>
+    </Fragment>
+  );
+};
+
+export default App;
