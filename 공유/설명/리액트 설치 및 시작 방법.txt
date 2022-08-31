@@ -1,0 +1,10 @@
+공유 -> cart 폴더를 vscode로 열어주세요
+
+리액트 사용법
+
+1. 리액트 파일이 존재하는 폴더 vscode로 열기
+2. 터미널을 열고 옆의 폴더 끌어와 cd 뒤에 붙이기
+	ex) cd f:\KH_project\공유\cart
+3. 터미널에 npm install
+4. 설치 완료후 터미널에 npm start 
+

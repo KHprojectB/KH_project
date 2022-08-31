@@ -1,0 +1,188 @@
+*****useState 설명*******
+
+- state 사용하기
+    1. 우선 라이브러리에서 임포트해와야 한다.
+    2. import React, {임포트할 함수명} from "react";
+        
+        → state는 import React, {useState} from "react";
+        
+    3. 그 후 우리가 사용하는 함수에 useState()를 호출
+        
+        → 이런 리액트 훅들은 함수에 직접적으로 호출해야한다.
+        
+        → 중첩된 함수 안에서 호출 x, 함수 밖에서 호출x
+        
+    4. useState(props.title); 이러면 props.title을 할당받은 특별한 변수가 생성됨
+    5. useState는 배열을 반환하는데 1번째 인자는 현재 상태값(props.title) 두번째 인자는 그것을 업데이트하는 함수
+        
+        → cosnt [title, setTitle] = useState(props.title);
+        
+        (→ setTitle 함수의 역할은 title의 값을 바꾸는 것..)
+        
+    6. setTitle()를 호출하여 ()안에 바꿀려는 값을 넣어주고 그것을 감싸는 함수를 이벤트 리스너에서 설명한 on~ = {} 안에 넣어주면 적용된다.
+
+- useState
+    
+    → 재사용성에서 볼수 있듯이 단순히 복사만 해줘도 같은 것들이 생성되기 때문에 다 같은 것아닌가 할수있지만 리액트에 의해 서로 독립적으로 관리된다.
+    
+    ⇒ 컴포넌트별 인스턴스를 기반으로 하여 독립적인 state를 가진다.
+    
+
+- 정리
+    
+    일단 코드가 실행되면서 위에서부터 코드를 쭉 읽고 setState의 조건이 충족되면 다시한번 코드를 읽는다.(즉, 재실행=항상 최신 상태)
+
+
+*****props*******
+
+- props는 기본적으로 객체다!
+1.  props를 매개변수로 갖고있는 컴포넌트에 어떻게 데이터를 전달할 수 있을까?
+    
+    → 상위 컴포넌트에서 전달하려는 컴포넌트에 속성을 추가하고 거기에 값을 담을 수 있다
+    
+    ```jsx
+   상위 컴포넌트
+    const Book = (props) => {
+    .
+    .
+    .
+    <Book title="messi"></Book>
+    ```
+    
+2. 그러면 받은 값에 어떻게 접근할 수 있을까?
+    
+    ```jsx
+   하위 컴포넌트
+    <p>{props.title}</p>
+    ```
+    
+    → props.속성명
+    
+3. 결론적으로 속성을 넣어주지 않으면 props이 값을 받을 수 없다
+
+
+다른 설명*****
+
+- 어떻게 컴포넌트를 재사용할 수 있을까?
+    
+    → 제일 간단한 재사용 방법은 import한 js를 복붙하면된다.
+    
+    → 하지만 이러면 값이 정적이다…우리가 원하는건 동적인 값이다.
+    
+    - props
+        
+        → 예를들어 App.js에 배열로 값들이 저장되어있고 그 값을 ExpenseItem에서 받아서 처리해야하는데 어떻게 전달해야할까??
+        
+        → 값들은 항상 밖에서 받아야 한다.
+        
+        → 매개변수..즉 props를 이용하자!
+        
+        - 사용법
+            
+            → 값들이 저장되어있는 컴포넌트에서 값을 넘겨줄려는 컴포넌트에 속성을 추가한다.(동적으로 접근하자)
+            
+            → 위에서 추가한 속성은 우리가 임의로 정한 이름이다. 그럼 이걸 어떻게 받을수 있을까? ⇒ props는 모든 속성을 받을수있다.
+            
+            → 값을 받으면 적용해줘야 하므로, 하드코딩 or 정적으로 값을 받고 있던것을 props.속성 으로 바꿔주자
+            
+        - 흐름 정리
+            1. 값(객체 or 배열)을 변수or상수에 저장함
+            2. 이값을 다른 컴포넌트에 넘겨주는데 방법은 임의의 속성과 props를 이용
+            3. 임의의 속성을 생성하여 {값}을 넘겨줌
+                
+                → <Expenses item={expenses}></Expenses>
+                
+                → 이경우는 App에서 Expenses로..
+                
+            4. 값을 props로 받았으니 사용하려면 {props.3에서 정의한 임의의 속성 ~}으로 사용
+            5. 값을 한번더 넘겨주기위해 위의 과정을 반복함
+                
+                → <ExpenseItem title={props.item[0].title}
+                
+                → 이경우는 Expenses에서 ExpenseItem으로..
+
+
+
+**** useContext ******
+
+
+
+→ 지금까지는 데이터를 이동시킬려면 props 와 임의의 속성을 이용했다.
+
+→ 이 방법은 매우 유용하지만, 앱이 커지면 거쳐가야할 길이 너무 길어진다.
+
+→ 왜냐하면 컴포넌트간의 데이터 이동은 직계끼리만 가능하기 때문
+
+→ 이를 해결하기 위해 리액트에는 전체 컴포넌트가 사용할 수 있는 내부적인 state 저장소가 존재한다. 이걸 react context라 하고,  활용해서 문제를 해결하자!
+
+- 사용법
+    1. context 폴더를 생성하고 거기에 ~-context.js를 생성
+    2. context를 생성함
+        
+        ```jsx
+        const AuthContext = React.createContext({
+          isLoggedIn: false
+        });
+        ```
+        
+        → 보통 객체로 생성함
+        
+    3. 그 다음에는 공급해야한다
+        
+        → context를 활용하는 모든 컴포넌트를 JSX 코드로 감싸야 한다.
+        
+        → 예를들어 모든 컴포넌트에 사용하고 싶다면, App.js에서 최상위로 감싸면된다.
+        
+        → 근데 우리가 정의한 context는 JSX가 아닌데 어떻게 처리해야할까?
+        
+    4. .Provider을 붙이면 된다!
+        
+        ```jsx
+        <AuthContext.Provider>
+                <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
+                <main>
+                  {!isLoggedIn && <Login onLogin={loginHandler} />}
+                  {isLoggedIn && <Home onLogout={logoutHandler} />}
+                </main>
+         </AuthContext.Provider>
+        ```
+        
+        → 이제 감싸진 모든 컴포넌트들은 context를 사용할수있게된다.
+        
+    5. 이제 context의 값에 접근하려면 리스닝을 해야한다.
+        1. 소비자 사용
+            
+            → context를 사용하려는 구체적인 컴포넌트를 감싸준다.
+            
+            ```jsx
+            <AuthContext.Consumer>
+                  <nav className={classes.nav}>
+                    <ul>
+                      ...
+                    </ul>
+                  </nav>
+             </AuthContext.Consumer>
+            ```
+            
+            → 소비자는 자식(함수)을 가지고, 인수로는 context 데이터를 가져온다
+            
+            → 반환값으로는 원래있던 로직을 모두 반환..
+            
+            → 그리고 props 대신 인수(ctx)를 사용한다. 
+            
+            → 다시 공급쪽으로 가서 value={객체}로 설정한다.
+            
+            → 하드코딩으로 해도 적용은되지만, 우리의 의도는 동적이어야한다.
+            
+            → 따라서 객체 값으로는 useState에서 설정된 현재(최신) state를 사용
+            
+        2. 리액트 훅 사용(주로 사용)
+            1. useContext를 임포트
+            2. useContext에 context 컴포넌트를 인자로..
+                
+                ```jsx
+                const ctx = useContext(AuthContext);
+                ```
+                
+            3. props 대신 ctx…
+            4. 공급 컴포넌트에 객체 값으로 함수를 집어넣을수 있다.
