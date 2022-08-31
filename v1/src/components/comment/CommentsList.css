@@ -1,9 +1,18 @@
-.expenses-list {
-  list-style: none;
-  padding: 0;
+.comment-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.expenses-list__fallback {
+.comment-list {
+  margin-left: 10rem;
+  list-style: none;
+  padding: 0;
+  background-color: #777;
+}
+
+.comment-list__fallback {
   color: white;
   text-align: center;
 }

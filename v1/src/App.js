@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar, Sidebar, Footer } from "./components";
 import Auth from "./components/Auth";
 import { Home, Products, SingleProduct, About, Cart, Error, Checkout, PrivateRoute } from "./pages";
 
+
 function App() {
+
   return (
     <BrowserRouter>
       <Navbar></Navbar>

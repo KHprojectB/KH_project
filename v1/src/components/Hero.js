@@ -1,28 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import heroBcg from "../assets/book-hero.jpg";
+import heroBcg from "../assets/books-main.jpg";
 import heroBcg2 from "../assets/hero-bcg-2.jpeg";
 
 const Hero = () => {
   return (
     <Wrapper className="section-center">
       <article className="content">
-        <h1>
-          Book <br></br>
-          rental Service
-        </h1>
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s,
-        </p>
-        <Link to="/products" className="btn hero-btn">
-          shop now
-        </Link>
-      </article>
-      <article className="img-container">
-        <img src={heroBcg} className="main-img"></img>
+        <div className="img-container">
+          <img src={heroBcg} className="main-img"></img>
+        </div>
+        <div className="textCon">
+          <h1>
+            Book <br></br>
+            rental Service
+          </h1>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+            text ever since the 1500s,
+          </p>
+          <Link to="/products" className="btn hero-btn">
+            shop now
+          </Link>
+        </div>
       </article>
     </Wrapper>
   );
@@ -32,15 +33,36 @@ const Wrapper = styled.section`
   min-height: 60vh;
   display: grid;
   place-items: center;
+  .content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
   .img-container {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: relative;
+    z-index: -1;
     display: none;
+    margin-left: -15rem;
+  }
+  .main-img {
+    filter: blur(5px);
+  }
+
+  .textCon {
+    z-index: 999;
+    position: absolute;
+    top: 25%;
   }
 
   p {
     line-height: 2;
     max-width: 45em;
     margin-bottom: 2rem;
-    color: var(--clr-grey-5);
+    color: rgb(255, 255, 3);
     font-size: 1rem;
   }
   @media (min-width: 992px) {
@@ -48,7 +70,9 @@ const Wrapper = styled.section`
     grid-template-columns: 1fr 1fr;
     gap: 8rem;
     h1 {
+      font-size: 3rem;
       margin-bottom: 2rem;
+      color: #fff;
     }
     p {
       font-size: 1.25rem;
@@ -58,17 +82,22 @@ const Wrapper = styled.section`
       font-size: 1.5rem;
     }
     .img-container {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
+      width: 100%;
+      height: 100%;
+      transform: scale(1.4);
     }
-    .main-img {
+    /* .main-img {
       width: 100%;
       height: 550px;
       position: relative;
       border-radius: var(--radius);
       display: block;
       object-fit: cover;
-    }
+    } */
     .accent-img {
       position: absolute;
       bottom: 0;

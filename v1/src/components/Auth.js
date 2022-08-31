@@ -5,7 +5,7 @@ import classes from "./Auth.module.css";
 import AuthContext from "../context/auth-context";
 import Loading from "./Loading";
 
-const Auth = () => {
+const Auth = (props) => {
   const history = useNavigate();
 
   const authCtx = useContext(AuthContext);
@@ -66,6 +66,11 @@ const Auth = () => {
       .catch((err) => {
         alert(err.message);
       });
+      
+      if (enteredEmail === "test@test.com") {
+        return props.onAsdf(true);
+      }
+
   };
 
   const signInHandler = () => {
@@ -130,11 +135,11 @@ const Auth = () => {
               <div>
                 <div className={classes.control}>
                   <label htmlFor="id">email</label>
-                  <input type="email" id="id" />
+                  <input type="email" id="id" ref={emailInputRef} />
                 </div>
                 <div className={classes.control}>
                   <label htmlFor="password">Password</label>
-                  <input type="password" id="password" />
+                  <input type="password" id="password" ref={pwInputRef} />
                 </div>
                 <div className={classes.control}>
                   <label htmlFor="name">Name</label>

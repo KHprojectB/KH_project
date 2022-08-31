@@ -1,24 +1,26 @@
-import React from 'react';
+import React from "react";
 
-import CommentItem from './CommentItem';
-import './CommentsList.css';
+import CommentItem from "./CommentItem";
+import "./CommentsList.css";
 
 const CommentsList = (props) => {
   if (props.items.length === 0) {
-    return <h2 className='expenses-list__fallback'>Found no expenses.</h2>;
+    return <h2 className="comments-list__fallback">Found no comments.</h2>;
   }
 
   return (
-    <ul className='expenses-list'>
-      {props.items.map((expense) => (
-        <CommentItem
-          key={expense.id}
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-        />
-      ))}
-    </ul>
+    <div className="comment-container">
+      <ul className="comments-list">
+        {props.items.map((comment) => (
+          <CommentItem
+            key={comment.id}
+            title={comment.title}
+            amount={comment.amount}
+            date={comment.date}
+          />
+        ))}
+      </ul>
+    </div>
   );
 };
 

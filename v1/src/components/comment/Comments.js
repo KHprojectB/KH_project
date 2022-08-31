@@ -7,12 +7,12 @@ import './Comments.css';
 const Comments = (props) => {
   const [isEditing, setIsEditing] = useState(false);
 
-  const saveExpenseDataHandler = (enteredExpenseData) => {
-    const expenseData = {
-      ...enteredExpenseData,
+  const savecommentDataHandler = (enteredcommentData) => {
+    const commentData = {
+      ...enteredcommentData,
       id: Math.random().toString(),
     };
-    props.onAddExpense(expenseData);
+    props.onAddcomment(commentData);
     setIsEditing(false);
   };
 
@@ -25,13 +25,13 @@ const Comments = (props) => {
   };
 
   return (
-    <div className='new-expense'>
+    <div className='new-comment'>
       {!isEditing && (
         <button onClick={startEditingHandler}>Add New Comment</button>
       )}
       {isEditing && (
         <CommentsForm
-          onSaveExpenseData={saveExpenseDataHandler}
+          onSavecommentData={savecommentDataHandler}
           onCancel={stopEditingHandler}
         />
       )}

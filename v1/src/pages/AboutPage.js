@@ -13,13 +13,13 @@ import AuthContext from "../context/auth-context";
 const AboutPage = () => {
 
   const authCtx = useContext(AuthContext);
-  const {admin} = authCtx
+  const {isAdmin} = authCtx
 
   return (
     
     <Fragment>
-      {!admin && <Mypage></Mypage>}
-      {admin && <AdminPage></AdminPage>}
+      {isAdmin && <Mypage></Mypage>}
+      {isAdmin && <AdminPage></AdminPage>}
       {/* <AdminPage></AdminPage> */}
     </Fragment>
   );

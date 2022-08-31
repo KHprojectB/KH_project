@@ -4,7 +4,7 @@ const AuthContext = React.createContext({
   token: "",
   isLoggedIn: false,
   admin: false,
-  isAdmin: true,
+  isAdmin: false,
   login: (token) => {},
   logout: () => {}
 });
@@ -13,7 +13,7 @@ export const AuthContextProvider = (props) => {
 
   const [token, setToken] = useState(null);
   const [admin, setAdmin] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(true)
+  const [isAdmin, setIsAdmin] = useState(false)
 
   const userIsLoggedIn = !!token;
 
@@ -25,14 +25,13 @@ export const AuthContextProvider = (props) => {
   }
 
   const adminHandler = () => {
-    setAdmin(true);
+    setIsAdmin(true);
   }
 
   const contextValue = {
     token: token,
     isLoggedIn: userIsLoggedIn,
     isAdmin: isAdmin,
-    admin: adminHandler,
     login: loginHandler,
     logout: logoutHandler
   }

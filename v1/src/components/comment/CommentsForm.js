@@ -42,13 +42,13 @@ const CommentsForm = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    const expenseData = {
+    const commentData = {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
 
-    props.onSaveExpenseData(expenseData);
+    props.onSavecommentData(commentData);
     setEnteredTitle('');
     setEnteredAmount('');
     setEnteredDate('');
@@ -56,8 +56,8 @@ const CommentsForm = (props) => {
 
   return (
     <form onSubmit={submitHandler}>
-      <div className='new-expense__controls'>
-        <div className='new-expense__control'>
+      <div className='new-comment__controls'>
+        <div className='new-comment__control'>
           <label>Comment</label>
           <input
             type='text'
@@ -65,7 +65,7 @@ const CommentsForm = (props) => {
             onChange={titleChangeHandler}
           />
         </div>
-        {/* <div className='new-expense__control'>
+        {/* <div className='new-comment__control'>
           <label>Amount</label>
           <input
             type='number'
@@ -75,7 +75,7 @@ const CommentsForm = (props) => {
             onChange={amountChangeHandler}
           />
         </div>
-        <div className='new-expense__control'>
+        <div className='new-comment__control'>
           <label>Date</label>
           <input
             type='date'
@@ -86,9 +86,9 @@ const CommentsForm = (props) => {
           />
         </div> */}
       </div>
-      <div className='new-expense__actions'>
+      <div className='new-comment__actions'>
         <button type="button" onClick={props.onCancel}>Cancel</button>
-        <button type='submit'>Add Expense</button>
+        <button type='submit'>Add Comment</button>
       </div>
     </form>
   );
