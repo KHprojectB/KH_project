@@ -24,7 +24,7 @@ const App = () => {
 
   return (
     <Fragment>
-      <Products products={dummyData} onShowCart={showCartHandler}></Products>
+      <Products asdf={dummyData} onShowCart={showCartHandler}></Products>
       <Cart onHideCart={hideCartHandler}></Cart>
     </Fragment>
   );

@@ -4,13 +4,14 @@ import CartContext from "../../store/cart-context";
 
 const Products = (props) => {
   const cartCtx = useContext(CartContext);
+
   const [index, setIndex] = useState(0);
 
   const nextHandler = () => {
     setIndex(index + 1);
   }
 
-  const {title, id} = props.products[index];
+  const {title, id} = props.asdf[index];
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -27,7 +28,7 @@ const Products = (props) => {
         <h1>{title}</h1>
         <form onSubmit={submitHandler}>
               <button onClick={props.onShowCart}>+ ADD</button>
-            </form>
+        </form>
       </div>
       <button onClick={nextHandler}>next</button>
     </div>
