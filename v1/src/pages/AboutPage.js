@@ -19,7 +19,7 @@ const AboutPage = () => {
     
     <Fragment>
       {isAdmin && <Mypage></Mypage>}
-      {isAdmin && <AdminPage></AdminPage>}
+      {!isAdmin && <AdminPage></AdminPage>}
       {/* <AdminPage></AdminPage> */}
     </Fragment>
   );

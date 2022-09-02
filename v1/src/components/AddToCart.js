@@ -33,13 +33,14 @@ const AddToCart = (props) => {
 
   const addToCartHandler = () => {
     addToCart(id, amount, props.product);
+    alert("카트에 추가되었습니다.")
   }
 
   return (
     <Wrapper>
       <div className='btn-container'>
         <AmountButtons amount={amount} increase={increase} decrease={decrease}></AmountButtons>
-        <Link to="/cart" className='btn' onClick={addToCartHandler}>add to cart</Link>
+        <button className='btn' onClick={addToCartHandler}>add to cart</button>
       </div>
     </Wrapper>
   )

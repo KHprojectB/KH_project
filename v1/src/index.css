@@ -395,6 +395,23 @@ Cocktail
   margin-bottom: 1rem;
   color: orange;
 }
+
+.alert {
+  padding: 0.375rem 0.75rem;
+  margin-bottom: 1rem;
+  border-color: transparent;
+  border-radius: var(--radius);
+}
+
+.alert-danger {
+  color: var(--clr-red-dark);
+  background: var(--clr-red-light);
+}
+.alert-success {
+  color: var(--clr-green-dark);
+  background: var(--clr-green-light);
+}
+
 @-webkit-keyframes load1 {
   0%,
   80%,

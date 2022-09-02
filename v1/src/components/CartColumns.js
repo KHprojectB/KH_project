@@ -1,8 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
-
 const CartColumns = () => {
-  return <h4>cart columns</h4>
+  return (
+    <Wrapper>
+      <div className='content'>
+        <h5>책이름</h5>
+        <h5>id</h5>
+        <h5>dummy</h5>
+        <h5>총수량</h5>
+        <span></span>
+      </div>
+      <hr />
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.div`

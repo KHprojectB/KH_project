@@ -118,12 +118,13 @@ const NavContainer = styled.nav`
       }
       a {
         color: var(--clr-grey-3);
-        font-size: 1rem;
+        font-size: 1.3em;
+        font-weight: 700;
         text-transform: capitalize;
         letter-spacing: var(--spacing);
         padding: 0.5rem;
         &:hover {
-          border-bottom: 2px solid var(--clr-primary-7);
+          border-bottom: 5px solid orange;
         }
       }
     }
