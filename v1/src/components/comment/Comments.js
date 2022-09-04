@@ -27,7 +27,7 @@ const Comments = (props) => {
   return (
     <div className='new-comment'>
       {!isEditing && (
-        <button onClick={startEditingHandler}>Add New Comment</button>
+        <button onClick={startEditingHandler}>리뷰 남기기</button>
       )}
       {isEditing && (
         <CommentsForm

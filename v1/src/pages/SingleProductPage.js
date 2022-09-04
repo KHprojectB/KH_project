@@ -54,7 +54,7 @@ const SingleProductPage = () => {
       {/* <PageHero title={name} product /> */}
       <div className="section section-center page">
         <Link to="/products" className="btn">
-          back to products
+          제품으로 돌아가기
         </Link>
         <div className="product-center">
           <img src={Img}></img>
@@ -64,7 +64,7 @@ const SingleProductPage = () => {
             <h5 className="price">{price / 100 < 1000 ? "대여가능" : "대여불가능"}</h5>
             <p className="desc">{description}</p>
             <p className="info">
-              <span>Available : </span>
+              <span>재고 : </span>
               {stock > 0 ? "In stock" : "sold out"}
             </p>
             {/* <p className='info'>
@@ -72,7 +72,7 @@ const SingleProductPage = () => {
               {sku}
             </p> */}
             <p className="info">
-              <span>Brand :</span>
+              <span>카테고리 :</span>
               {company}
             </p>
             <hr />

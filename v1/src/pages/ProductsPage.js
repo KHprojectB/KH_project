@@ -8,7 +8,6 @@ import SearchForm from '../components/Search'
 const ProductsPage = () => {
   return (
     <div>
-     {/* <PageHero title='products' /> */}
       <SearchForm></SearchForm>
       <main>
       <Wrapper className='page'>

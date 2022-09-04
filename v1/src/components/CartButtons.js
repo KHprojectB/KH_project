@@ -11,11 +11,14 @@ import Auth from './Auth'
 const CartButtons = () => {
   const authCtx = useContext(AuthContext);
 
-  const {closeSidebar} = useProductsContext();
   const isLoggedIn = authCtx.isLoggedIn;
   const logoutHandler = () => {
     authCtx.logout();
   }
+
+  const {closeSidebar} = useProductsContext();
+
+  const {total_items} = useCartContext();
 
   return (
     <Wrapper className='cart-btn-wrapper'>
@@ -23,7 +26,7 @@ const CartButtons = () => {
         Cart
         <span className='cart-container'>
           <FaShoppingCart></FaShoppingCart>
-          {/* <span className='cart-value'>12</span> */}
+          <span className='cart-value'>{total_items}</span>
         </span>
       </Link>
       {!isLoggedIn && <Link to="/auth" className='auth-btn'>

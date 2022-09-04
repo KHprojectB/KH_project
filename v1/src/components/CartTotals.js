@@ -6,7 +6,24 @@ import { formatPrice } from '../utils/helpers'
 import { Link } from 'react-router-dom'
 
 const CartTotals = () => {
-  return <h4>cart totals</h4>
+
+  const {total_items, shipping_fee} = useCartContext();
+
+  return (
+    <Wrapper>
+      <div>
+        <article>
+          <h5>총 수량: <span>{total_items}</span></h5>
+          <p>대여비: <span>{shipping_fee}원</span></p>
+          <hr></hr>
+          <h4>결제 금액: <span>{total_items * shipping_fee}원</span></h4>
+        </article>
+        <Link to="/checkout" className='btn'>
+          상품 결제
+        </Link>
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`

@@ -87,7 +87,7 @@ const Auth = (props) => {
       <div>
         {isLogin && (
           <section>
-            <h1>Login</h1>
+            <h1>로그인</h1>
             <form action="submit" onSubmit={submitHandler}>
               <div className={classes.control}>
                 <label htmlFor="id">email</label>
@@ -109,7 +109,7 @@ const Auth = (props) => {
         )}
         {!isLogin && (
           <div>
-            <h1>Sign Up</h1>
+            <h1>회원가입</h1>
             <div>
               <form onSubmit={submitHandler}>
                 <div>

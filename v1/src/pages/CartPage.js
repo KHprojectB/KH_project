@@ -11,9 +11,9 @@ const CartPage = () => {
     return (
       <Wrapper className='page-100'>
         <div className='empty'>
-          <h2>Your Cart is empty</h2>
+          <h2>카트가 비어있습니다!</h2>
           <Link to="/products" className='btn'>
-            go back products
+            제품 둘러보기
           </Link>
         </div>
       </Wrapper>

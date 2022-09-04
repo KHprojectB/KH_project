@@ -5,7 +5,7 @@ import "./CommentsList.css";
 
 const CommentsList = (props) => {
   if (props.items.length === 0) {
-    return <h2 className="comments-list__fallback">Found no comments.</h2>;
+    return <h2 className="comments-list__fallback">아직 리뷰가 없습니다.</h2>;
   }
 
   return (

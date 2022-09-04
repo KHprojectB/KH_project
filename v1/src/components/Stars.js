@@ -25,7 +25,7 @@ const Stars = (props) => {
         </span>
       </div>
       <p className='reviews'>
-        ({reviews} customer review)
+        ({reviews} 명이 평가하였습니다)
       </p>
     </Wrapper>
   )
