@@ -3,7 +3,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useProductsContext } from "../context/products_context";
 import { single_product_url as url } from "../utils/constants";
 import { formatPrice } from "../utils/helpers";
-import { Loading, Error, ProductImages, AddToCart, Stars, PageHero } from "../components";
+import {
+  Loading,
+  Error,
+  ProductImages,
+  AddToCart,
+  Stars,
+  PageHero,
+} from "../components";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Comments from "../components/comment/Comments";
@@ -13,6 +20,11 @@ import Img from "../assets/book1.jpg";
 
 const SingleProductPage = () => {
   const [comments, setcomments] = useState([]);
+  
+  const [index, setIndex] = useState(0);
+  const plusIndexHandler = () => {
+    setIndex(index + 1);
+  }
 
   const addcommentHandler = (comment) => {
     setcomments((prevcomments) => {
@@ -48,7 +60,17 @@ const SingleProductPage = () => {
     return <Error />;
   }
 
-  const { name, price, description, stock, stars, reviews, id: sku, company, images } = product;
+  const {
+    name,
+    price,
+    description,
+    stock,
+    stars,
+    reviews,
+    id: sku,
+    company,
+    images,
+  } = product;
   return (
     <Wrapper>
       {/* <PageHero title={name} product /> */}
@@ -61,11 +83,13 @@ const SingleProductPage = () => {
           <section className="content">
             <h2>{name}</h2>
             <Stars stars={stars} reviews={reviews} />
-            <h5 className="price">{price / 100 < 1000 ? "대여가능" : "대여불가능"}</h5>
+            <h5 className="price">
+              {price / 100 < 1000 ? "대여가능" : "대여불가능"}
+            </h5>
             <p className="desc">{description}</p>
             <p className="info">
               <span>재고 : </span>
-              {stock > 0 ? "In stock" : "sold out"}
+              {stock > 0 ? "재고있음" : "재고없음"}
             </p>
             {/* <p className='info'>
               <span>Id :</span>
@@ -80,9 +104,9 @@ const SingleProductPage = () => {
           </section>
         </div>
       </div>
-      <Comments onAddcomment={addcommentHandler}></Comments>
+      <Comments onAddcomment={addcommentHandler} plusIndexHandler={plusIndexHandler} index={index}></Comments>
       <div className="newComment">
-        <NewComments items={comments}></NewComments>
+        <NewComments items={comments} index={index}></NewComments>
       </div>
     </Wrapper>
   );
@@ -119,7 +143,7 @@ const Wrapper = styled.main`
     align-items: center;
     justify-content: center;
     width: 30rem;
-    margin-left: 33rem;
+    margin: 0 auto;
   }
 
   @media (min-width: 992px) {

@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import './CommentsForm.css';
 
 const CommentsForm = (props) => {
+
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDate] = useState('');
+  
   // const [userInput, setUserInput] = useState({
   //   enteredTitle: '',
   //   enteredAmount: '',
@@ -88,7 +90,7 @@ const CommentsForm = (props) => {
       </div>
       <div className='new-comment__actions'>
         <button type="button" onClick={props.onCancel}>Cancel</button>
-        <button type='submit'>Add Comment</button>
+        <button type='submit' onClick={props.plusIndexHandler}>Add Comment</button>
       </div>
     </form>
   );

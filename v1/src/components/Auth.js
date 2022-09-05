@@ -15,9 +15,6 @@ const Auth = (props) => {
 
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [adminBtn, setAdminBtn] = useState(false);
-  const [show, setShow] = useState(true);
-
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -31,9 +28,11 @@ const Auth = (props) => {
     setIsLoading(true);
     let url;
     if (isLogin) {
-      url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB5n5Te8o0UoYv61yOYLA-JSngrFzxKDSM";
+      url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB5n5Te8o0UoYv61yOYLA-JSngrFzxKDSM";
     } else {
-      url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB5n5Te8o0UoYv61yOYLA-JSngrFzxKDSM";
+      url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB5n5Te8o0UoYv61yOYLA-JSngrFzxKDSM";
     }
     fetch(url, {
       method: "POST",
@@ -62,16 +61,17 @@ const Auth = (props) => {
       })
       .then((data) => {
         authCtx.login(data.idToken);
-        // history("/");
+        authCtx.isAdmin("");
+        history("/");
+
+        if (enteredEmail === "test@test.com" && enteredPw === "123456") {
+          authCtx.isAdmin("messi");
+          history("/")
+        }
       })
       .catch((err) => {
         alert(err.message);
       });
-
-    if (enteredEmail === "test@test.com" && enteredPw === "123456") {
-      // history("/about")
-      setAdminBtn(true);
-    }
   };
 
   const signInHandler = () => {
@@ -83,7 +83,6 @@ const Auth = (props) => {
 
   return (
     <main className={classes.auth}>
-      {adminBtn && <Link to="/admin">go to admin page</Link>}
       <div>
         {isLogin && (
           <section>
@@ -131,7 +130,9 @@ const Auth = (props) => {
                   </div>
                 </div>
                 <div className={classes.btnCon}>
-                  {!isLoading && <button className={classes.btn}>Sign Up</button>}
+                  {!isLoading && (
+                    <button className={classes.btn}>Sign Up</button>
+                  )}
                   <p className={classes.p} onClick={signInHandler}>
                     Go to Login
                   </p>

@@ -11,14 +11,14 @@ const CartColumns = (props) => {
 
   const removeHandler = () => {
     removeItem(id);
-  }
+  };
 
   const increase = () => {
-    toggleAmount(id, "increase")
-  }
+    toggleAmount(id, "increase");
+  };
   const decrease = () => {
-    toggleAmount(id, "decrease")
-  }
+    toggleAmount(id, "decrease");
+  };
 
   return (
     <Wrapper>
@@ -36,6 +36,27 @@ const CartColumns = (props) => {
             </tr>
           </thead>
           <tbody>
+            {/* {props.cart.map((item) => {
+              return (
+                <tr>
+                  <td>
+                    <button type="button" className="remove-btn" onClick={removeHandler}>
+                      <FaTrash></FaTrash>
+                    </button>
+                  </td>
+                  <td>{item.id}</td>
+                  <td>
+                    <img src={item.image} width="50px" />
+                  </td>
+                  <td>{item.name}</td>
+                  <td>기시미 이치로</td>
+                  <td>
+                    <AmountButtons amount={item.amount} increase={increase} decrease={decrease}></AmountButtons>
+                  </td>
+                  <td>{item.amount}</td>
+                </tr>
+              );
+            })} */}
             <tr>
               <td>
                 <button type="button" className="remove-btn" onClick={removeHandler}>
@@ -49,7 +70,7 @@ const CartColumns = (props) => {
               <td>{name}</td>
               <td>기시미 이치로</td>
               <td>
-                <AmountButtons amount={amount} increase={increase} decrease={decrease}></AmountButtons>
+                dummy
               </td>
               <td>{amount}</td>
             </tr>

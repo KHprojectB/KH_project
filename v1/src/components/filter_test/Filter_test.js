@@ -24,27 +24,27 @@ const Filter_test = () => {
         </li>
         <li>
           <button to="/cart" className={styles["nav-toggle"]}>
-            <span className={styles.text}>Categories</span>
+            <span className={styles.text}>카테고리</span>
           </button>
         </li>
         <li>
           <button className={styles["nav-toggle"]} onClick={setGridView}>
-            <span className={styles.text}>GridView</span>
+            <span className={styles.text}>정렬(grid)</span>
           </button>
         </li>
         <li>
           <button className={styles["nav-toggle"]} onClick={setListView}>
-            <span className={styles.text}>ListView</span>
+            <span className={styles.text}>정렬(list)</span>
           </button>
         </li>
         <li>
           <button className={styles["nav-toggle"]}>
-            <span className={styles.text}>Name a-z</span>
+            <span className={styles.text}>이름순 ㄱ-ㅎ</span>
           </button>
         </li>
         <li>
           <button className={styles["nav-toggle"]}>
-            <span className={styles.text}>Name z-a</span>
+            <span className={styles.text}>이름순 ㅎ-ㄱ</span>
           </button>
         </li>
       </ul>

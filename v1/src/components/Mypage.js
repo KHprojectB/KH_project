@@ -6,123 +6,59 @@ import { FaChartPie } from "react-icons/fa";
 import dummyList from "../dummyList";
 import Expenses from "./Chart/Expenses";
 
+const dummyData = [
+  { id: 0, value: { title: "자바의 정석", start: "2022.06", end: "2022.09", state: "반납" } },
+  { id: 1, value: { title: "이펙티브 자바", start: "2022.06", end: "2022.09", state: "반납" } },
+  { id: 2, value: { title: "DoIt 오라클", start: "2022.06", end: "2022.09", state: "미반납" } },
+  { id: 3, value: { title: "객체지향의 사실과 오해", start: "2022.06", end: "2022.09", state: "반납" } },
+  { id: 4, value: { title: "모던 자바 인 액션", start: "2022.06", end: "2022.09", state: "미반납" } },
+];
+
 const Mypage = () => {
 
+  const [show, setShow] = useState("미반납")
   const [bannap, setBannap] = useState(false);
-  if (bannap) {
-    return "";
-  }
-  const bannapHandler = () => {
-    setBannap(true);
-  }
+  
 
   return (
     <div className={styles.header}>
-      <h1>Rental status</h1>
-      <Expenses></Expenses>
-      {/* <h1>Rental status</h1>
-      <div className={styles.container}>
-        <div className={styles.chart}>
-          <span className={styles.icon}>
-            <BsBarChartFill></BsBarChartFill>
-          </span>
-          <div className={styles.info}>
-            <div className={styles.left}>
-              <h3>대여 기간</h3>
-              <h1>~2022.08</h1>
-            </div>
-            <div className={styles.progress1}>
-              <svg>
-                <circle cx="38" cy="38" r="36"></circle>
-              </svg>
-              <div className={styles.num}>
-                <p>90%</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.chart}>
-          <span className={styles.icon}>
-            <FaChartPie></FaChartPie>
-          </span>
-          <div className={styles.info}>
-            <div className={styles.left}>
-              <h3>남은 기간</h3>
-              <h1>12일</h1>
-            </div>
-            <div className={styles.progress2}>
-              <svg>
-                <circle cx="38" cy="38" r="36"></circle>
-              </svg>
-              <div className={styles.num}>
-                <p>60%</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.chart}>
-          <span className={styles.icon}>
-            <FaChartPie></FaChartPie>
-          </span>
-          <div className={styles.info}>
-            <div className={styles.left}>
-              <h3>대출 수량</h3>
-              <h1>4권</h1>
-            </div>
-            <div className={styles.progress3}>
-              <svg>
-                <circle cx="38" cy="38" r="36"></circle>
-              </svg>
-              <div className={styles.num}>
-                <p>40%</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-      <div className={styles.list}>
-        <h2>Recent Books</h2>\
-        <div className={styles.list2}>
-          <div className={styles.center}>
-            <table>
-              <thead>
+      <div className={styles.state}>
+        <h1>책 대여 현황</h1>
+        <Expenses></Expenses>
+      </div>
+      <div className={styles.table}>
+        <table class={styles["cart-table"]}>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>제목</th>
+              <th>대여일</th>
+              <th>반납예정일</th>
+              <th>상태</th>
+            </tr>
+          </thead>
+          <tbody>
+            {dummyData.map((item) => {
+              return (
                 <tr>
-                  <th>ok?</th>
-                  <th>Title</th>
-                  <th>ID</th>
-                  <th>Auth</th>
-                  <th>Date</th>
-                  <th>End</th>
-                  <th>dummy</th>
+                  <td>
+                    <button>반납하기</button>
+                  </td>
+                  <td>{item.value.title}</td>
+                  <td>{item.value.start}</td>
+                  <td>{item.value.end}</td>
+                  <td>{show}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {dummyList.map((item) => {
-                  return (
-                    <tr>
-                      <td>
-                        <label><input type="checkbox"></input></label>
-                      </td>
-                      <td>
-                        {item.title}
-                      </td>
-                      <td>{item.ID}</td>
-                      <td>{item.auth}</td>
-                      <td>{item.Date}</td>
-                      <td>{item.end}</td>
-                      <td>dummy</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-          {/* <Expenses></Expenses> */}
-        </div>
-        <div className={styles["btn-container"]}>
-              <button className={styles.btn}>대여 연장</button>
-              <button className={styles.btn}>반납 신청</button>
-        </div>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <div className={styles["btn-container"]}>
+        <button className={styles.btn}>대여 연장</button>
+        <button className={styles.btn}>
+          반납 신청
+        </button>
       </div>
     </div>
   );

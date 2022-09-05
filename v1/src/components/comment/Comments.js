@@ -23,6 +23,7 @@ const Comments = (props) => {
   const stopEditingHandler = () => {
     setIsEditing(false);
   };
+  
 
   return (
     <div className='new-comment'>

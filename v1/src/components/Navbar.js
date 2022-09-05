@@ -15,6 +15,7 @@ const Nav = () => {
 
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
+  const admin = authCtx.admin;
 
   return (
     <NavContainer>
@@ -31,8 +32,11 @@ const Nav = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
-          {isLoggedIn && <li>
+          {(isLoggedIn && !admin) && <li>
             <Link to="/about">MyPage</Link>
+          </li>}
+          {(isLoggedIn && admin) && <li>
+            <Link to="/admin">AdminPage</Link>
           </li>}
           <li>
             <Link to="/products">Books</Link>

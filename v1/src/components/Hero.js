@@ -21,7 +21,7 @@ const Hero = () => {
             text ever since the 1500s,
           </p>
           <Link to="/products" className="btn hero-btn">
-            shop now
+            제품 보러가기
           </Link>
         </div>
       </article>
