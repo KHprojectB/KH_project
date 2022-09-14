@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  letter-spacing: .1rem;
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 1.25rem;
+}
+h5 {
+  font-size: 0.875rem;
+}
+
+.h3 {
+  text-align: center;
+}
+
+.cart-background {
+  width: 100%;
+  padding: 30px;
+}
+
+.asdf {
+  position: relative;
+}
+
+.cart-table {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+}
+
+.cart-table th, .cart-table td {
+  padding: 15px;
+  border-bottom: 1px solid black;
+  border-collapse: collapse;
+}
+
+.cart-table th:nth-child(4) {
+  width: 500px;
+}
+
+.btn {
+  position: absolute;
+  top: 110%;
+  left: 83%;
+}
+

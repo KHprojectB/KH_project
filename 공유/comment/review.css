@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: "Noto Sans KR", sans-serif;
+  }
+
+  .review-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    width: 100%;
+    margin-top: 2rem;
+    position: relative;
+  }
+
+  .review-container h2 {
+    font-size: 28px;
+    margin-right: 2rem;
+  }
+
+  .writing-box {
+    width: 700px;
+    height: 50px;
+    padding: 10px;
+    outline: none;
+    resize: none;
+    font-size: 14px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border-color: #bfbfbf;
+    max-height: 250px;
+  }
+
+  .writing-zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn {
+    margin: 10px;
+    padding: 0.5rem 1rem;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: auto;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    margin-top: 2rem;
+    }
+
+  .review-box {
+    width: 800px;
+    box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    padding: 20px;
+    /* margin: 15px; */
+    margin: 1rem 1rem;
+    position: absolute;
+    top: 110%;
+    left: 23%;
+  }
+
+  .comment p{
+    font-size: 0.8rem;
+    color: #4b4b4b;
+  }
+
+  textarea::-webkit-scrollbar{
+    width: 0px;
+  }
