@@ -1,27 +1,51 @@
 import { useState } from "react";
 import axios from "axios";
 
-const url = "https://dapi.kakao.com/v3/search/book";
+const url = "/web/book/list";
 
 const Books_test = () => {
+
+
   const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchBooksData = async () => {
     try {
-      const res = await axios(url, {
-        method: "get",
-        headers: {
-          Authorization: "KakaoAK 7becfcdd336e73a6c7bfe024ce5670a6",
-        },
-        params: {
-          query: "0",
-        },
+      const res = await axios.get(url, {
+        headers: {"Content-Type": "application/json"}
       });
-      const data = res.data.documents;
-      setBooks(data);
+      const data = res.json();
       console.log(data);
     } catch (error) {}
   };
+
+  // const fetchBookHandler = async () => {
+  //   setIsLoading(true);
+
+  //   fetch("/web/login/login", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((res) => {
+  //       console.log(res.clone().json());
+  //       setIsLoading(false);
+  //       if (res.ok) {
+  //         return res.json();
+  //       } else {
+  //         return res.json().then((data) => {
+  //           let errorMessage = "로그인 오류";
+  //           // if (data && data.error && data.error.message) {
+  //           //   errorMessage = data.error.message;
+  //           // }
+  //           throw new Error(errorMessage);
+  //         });
+  //       }
+  //     })
+
+  //     setIsLoading(false);
+  // };
 
   return (
     <section className="section text-center">

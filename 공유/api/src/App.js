@@ -14,23 +14,19 @@ function App() {
   const fetchMovieHandler = async () => {
     setIsLoading(true);
 
-    const response = await fetch("https://swapi.dev/api/films/", {
+    const response = await fetch("/web/book/list", {
       method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
     })
     const data = await response.json();
+    console.log(data)
       // .then((response) => {
       //   return response.json();
       // })
       // .then((data) => {
-        const transformedMovies = data.results.map((movieData) => {
-          return {
-            id: movieData.episode_id,
-            title: movieData.title,
-            openingText: movieData.opening_crawl,
-            releaseDate: movieData.release_date,
-          };
-        });
-        setMovies(transformedMovies);
+      setMovies(data);
       // });
 
       setIsLoading(false);
@@ -44,8 +40,8 @@ function App() {
       <section>
         <MoviesList movies={movies} />
       </section>
-      <Books></Books>
-      <Books_test></Books_test>
+      {/* <Books></Books>
+      <Books_test></Books_test> */}
     </React.Fragment>
   );
 }

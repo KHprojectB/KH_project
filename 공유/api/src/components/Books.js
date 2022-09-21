@@ -11,7 +11,7 @@ const Books = () => {
   const fetchBookHandler = async () => {
     setIsLoading(true);
 
-    const response = await fetch("https://dapi.kakao.com/v3/search/book?target=title", {
+    const response = await fetch("/web/book/list", {
       method: "GET",
     })
     const data = await response.json();
@@ -19,11 +19,10 @@ const Books = () => {
       //   return response.json();
       // })
       // .then((data) => {
-        const transformedbooks = data.documents.map((bookData) => {
+        const transformedbooks = data.map((bookData) => {
           return {
-            key: bookData.isbn,
-            id: bookData.url,
-            title: bookData.title,
+            key: bookData.bookId,
+            name: bookData.bookName,
           };
         });
         setbooks(transformedbooks);
@@ -35,9 +34,8 @@ const Books = () => {
   return (
     <div>
       <BooksList
-        key={books.isbn}
-        id={books.url}
-        title={books.title}
+        key={books.key}
+        title={books.name}
       ></BooksList>
     </div>
   )
