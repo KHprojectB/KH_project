@@ -38,6 +38,7 @@ export const AuthContextProvider = (props) => {
     localStorage.setItem('token', null)
     setToken(null);
     setAdmin(false);
+    window.location.reload();
   }
 
   const adminHandler = (a) => {

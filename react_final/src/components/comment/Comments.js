@@ -24,6 +24,7 @@ const Comments = (props) => {
     setIsEditing(false);
   };
   
+  console.log(props.findBookId)
 
   return (
     <div>
@@ -32,6 +33,7 @@ const Comments = (props) => {
       )} */}
       
         <CommentsForm
+          findBookId={props.findBookId}
           onSavecommentData={savecommentDataHandler}
           onCancel={stopEditingHandler}
         />

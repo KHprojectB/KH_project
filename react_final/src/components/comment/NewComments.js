@@ -4,7 +4,7 @@ import CommentsList from './CommentsList'
 
 const NewComments = (props) => {
   return (
-    <CommentsList items={props.items} />
+    <CommentsList comment={props.comment} findBookId={props.findBookId} items={props.items} />
   )
 }
 

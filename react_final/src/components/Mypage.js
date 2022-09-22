@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { Fragment, useState, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import AuthContext from "../context/auth-context";
 import axios from "axios"
@@ -19,6 +19,9 @@ const dummyData = [
 ];
 
 const Mypage = () => {
+
+  const index = Math.random();
+
   const authCtx = useContext(AuthContext);
   const name = authCtx.mbId
   console.log(name)
@@ -29,7 +32,7 @@ const Mypage = () => {
   const [rentalBookList, setRentalBookList] = useState([]);
 
   const url = "/web/book/rentalList"
-  const fetchProducts = async () => {
+  const fetchProducts = async (url) => {
     try {
       const response = await axios.get(url);
       const products = response.data;
@@ -40,9 +43,14 @@ const Mypage = () => {
     }
   }
 
-  const newList = rentalBookList.find((item) => (
+  useEffect(() => {
+    fetchProducts(url)
+  }, [])
+
+  const newList = rentalBookList.filter((item) => (
     item.mbId === name
   ))
+  console.log(newList)
 
   return (
     <div className={styles.header}>
@@ -63,10 +71,10 @@ const Mypage = () => {
           <span></span>
         </div>
         <hr />
-        {rentalBookList.map((item) => {
+        {newList && newList.map((item) => {
           return <MypageItem {...item} show={show}></MypageItem>
         })}
-        {/* <MypageItem books={newList}></MypageItem> */}
+        {/* {newList && <MypageItem books={newList}></MypageItem>} */}
       </div>
       <div className={styles["btn-container"]}>
         <button className={styles.btn}>대여 연장</button>

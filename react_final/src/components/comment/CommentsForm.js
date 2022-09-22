@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import './CommentsForm.css';
+import { useProductsContext } from "../../context/products_context";
+import CommentContext from '../../context/comment-context';
 
 const CommentsForm = (props) => {
+
+  const commentCtx = useContext(CommentContext);
+  // console.log(commentList);
 
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredAmount, setEnteredAmount] = useState('');
@@ -41,19 +48,73 @@ const CommentsForm = (props) => {
     // });
   };
 
+  // const {products} = useProductsContext();
+
+  // const findBookId = products.find((item) => {
+  //   return item.bookId === id;
+  // })
+
+  const [isLoading, setIsLoading] = useState(false);
+  const history = useNavigate();
+
   const submitHandler = (event) => {
     event.preventDefault();
 
-    const commentData = {
-      title: enteredTitle,
-      amount: enteredAmount,
-      date: new Date(enteredDate),
-    };
+    // const commentData = {
+    //   title: enteredTitle,
+    //   amount: enteredAmount,
+    //   date: new Date(enteredDate),
+    // };
 
-    props.onSavecommentData(commentData);
-    setEnteredTitle('');
-    setEnteredAmount('');
-    setEnteredDate('');
+    const content = enteredTitle;
+    const bookId = props.findBookId;
+
+    console.log(content, bookId)
+
+    fetch("/web/comment/comment", {
+      method: "POST",
+      body: JSON.stringify({
+        content: content,
+        bookId: bookId,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        console.log(res.clone().json());
+        setIsLoading(false);
+        if (res.ok) {
+          return res.json();
+        } else {
+          return res.json().then((data) => {
+            let errorMessage = "로그인 오류";
+            // if (data && data.error && data.error.message) {
+            //   errorMessage = data.error.message;
+            // }
+            throw new Error(errorMessage);
+          });
+        }
+      })
+      .then((data) => {
+        alert(data);
+        window.location.reload();
+        console.log(data)
+        // history("/");
+
+        // if (enteredEmail === "test@test.com" && enteredPw === "123456") {
+        //   authCtx.isAdmin("messi");
+        //   history("/")
+        // }
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+
+    // props.onSavecommentData(commentData);
+    // setEnteredTitle('');
+    // setEnteredAmount('');
+    // setEnteredDate('');
   };
 
   return (

@@ -10,20 +10,23 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import { AppProvider } from "./context/test";
 import { AuthContextProvider } from "./context/auth-context";
 import { RentalContextProvider } from "./context/rental-context";
+import {CommentContextProvider} from "./context/comment-context";
 
 ReactDOM.render(
   <AuthContextProvider>
-    <ProductsProvider>
-      <FilterProvider>
-        <RentalContextProvider>
-          <CartProvider>
-            <AppProvider>
-              <App />
-            </AppProvider>
-          </CartProvider>
-        </RentalContextProvider>
-      </FilterProvider>
-    </ProductsProvider>
+      <ProductsProvider>
+        <FilterProvider>
+          <RentalContextProvider>
+            <CartProvider>
+              <AppProvider>
+    <CommentContextProvider>
+                <App />
+    </CommentContextProvider>
+              </AppProvider>
+            </CartProvider>
+          </RentalContextProvider>
+        </FilterProvider>
+      </ProductsProvider>
   </AuthContextProvider>,
 
   document.getElementById("root")

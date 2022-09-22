@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from "./MypageItem.module.css"
 
-const MypageItem = ({bookId, mbId, rtEndTime, rtStartTime, rtWh}) => {
+const MypageItem = ({bookId, mbId, rtEndTime, rtWh}) => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>

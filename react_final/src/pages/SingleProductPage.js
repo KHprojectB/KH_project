@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useProductsContext } from "../context/products_context";
 import { single_product_url as url } from "../utils/constants";
 import { formatPrice } from "../utils/helpers";
+import axios from "axios"
 import {
   Loading,
   Error,
@@ -120,9 +121,9 @@ const SingleProductPage = () => {
           </section>
         </div>
       </div>
-      <Comments onAddcomment={addcommentHandler} plusIndexHandler={plusIndexHandler} index={index}></Comments>
+      <Comments findBookId={id} onAddcomment={addcommentHandler} plusIndexHandler={plusIndexHandler} index={index}></Comments>
       <div className="newComment">
-        <NewComments items={comments} index={index}></NewComments>
+        <NewComments findBookId={id} items={comments} index={index}></NewComments>
       </div>
     </Wrapper>
   );
